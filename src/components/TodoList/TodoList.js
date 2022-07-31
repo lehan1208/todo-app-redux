@@ -10,6 +10,7 @@ import { todoRemainingSelector } from '../../redux/selector.js';
 export default function TodoList() {
   const [todoName, setTodoName] = useState('');
   const [priority, setPriority] = useState('Medium');
+
   let todoList = useSelector(todoRemainingSelector);
 
   const dispatch = useDispatch();
