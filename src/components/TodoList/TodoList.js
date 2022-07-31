@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 
+import { addNewTodo } from './todosSlice.js';
 import { todoRemainingSelector } from '../../redux/selector.js';
-import { addTodo } from '../../redux/actions.js';
 
 export default function TodoList() {
   const [todoName, setTodoName] = useState('');
@@ -13,15 +13,16 @@ export default function TodoList() {
   let todoList = useSelector(todoRemainingSelector);
 
   const dispatch = useDispatch();
-  const handleAddTodo = async () => {
+  const handleAddTodo = () => {
     dispatch(
-      addTodo({
+      addNewTodo({
         id: uuidv4(),
         name: todoName,
         completed: false,
         priority: priority,
       })
     );
+
     setTodoName('');
     setPriority('Medium');
   };
